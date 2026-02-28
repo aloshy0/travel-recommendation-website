@@ -16,18 +16,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: white;
         }
 
         nav ul {
             list-style: none;
-            display: flex;
             margin: 0;
             padding: 0;
+            display: flex;
         }
 
         nav ul li {
-            margin-right: 20px;
+            margin-right: 15px;
         }
 
         nav ul li a {
@@ -43,31 +42,30 @@
         .search-container button {
             padding: 5px 10px;
             margin-left: 5px;
-            cursor: pointer;
         }
 
-        .content {
+        section {
             padding: 20px;
         }
 
         .card {
-            margin-top: 20px;
             background: white;
-            padding: 10px;
+            padding: 15px;
+            margin: 10px 0;
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        img {
-            width: 300px;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-            margin-top: 10px;
+        .card img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 5px;
+        }
+
+        .hidden {
+            display: none;
         }
     </style>
 </head>
-
 <body>
 
 <nav>
@@ -84,94 +82,102 @@
     </div>
 </nav>
 
-<div class="content" id="mainContent">
+<section id="home">
     <h1>Welcome to Our Travel Recommendation Website</h1>
-    <p>This website helps you discover beaches, temples, and countries around the world.</p>
-    <div id="results"></div>
-</div>
+    <p>This website helps you discover beautiful beaches, historic temples, and amazing countries to explore.</p>
+</section>
+
+<section id="about" class="hidden">
+    <h2>About Us</h2>
+    <p>We are a travel recommendation company dedicated to helping users find the best destinations around the world.</p>
+
+    <h3>Our Team</h3>
+    <ul>
+        <li><strong>Aloshy</strong> – Project Developer</li>
+        <li><strong>John Doe</strong> – Content Manager</li>
+        <li><strong>Jane Smith</strong> – UI Designer</li>
+    </ul>
+
+    <p>Team members are expected to maintain high-quality code, collaborate effectively, and contribute innovative travel ideas.</p>
+</section>
+
+<section id="contact" class="hidden">
+    <h2>Contact Us</h2>
+    <p>Email: travel@example.com</p>
+    <p>Phone: +91 9876543210</p>
+
+    <form>
+        <label>Name:</label><br>
+        <input type="text" required><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" required><br><br>
+
+        <label>Message:</label><br>
+        <textarea required></textarea><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+<section id="results"></section>
 
 <script>
-
 function showHome() {
-    document.getElementById("mainContent").innerHTML = `
-        <h1>Welcome to Our Travel Recommendation Website</h1>
-        <p>This website helps you discover beaches, temples, and countries around the world.</p>
-        <div id="results"></div>
-    `;
+    hideAll();
+    document.getElementById("home").classList.remove("hidden");
 }
 
 function showAbout() {
-    document.getElementById("mainContent").innerHTML = `
-        <h1>About Us</h1>
-        <p>We are a travel recommendation company helping users explore destinations worldwide.</p>
-        <p><strong>Team Guidance:</strong> Team members should regularly update destination data, verify image sources, and maintain clean code structure.</p>
-        <div id="results"></div>
-    `;
+    hideAll();
+    document.getElementById("about").classList.remove("hidden");
 }
 
 function showContact() {
-    document.getElementById("mainContent").innerHTML = `
-        <h1>Contact Us</h1>
-        <p>Email: support@travelrecommendation.com</p>
-        <p>Phone: +91-XXXXXXXXXX</p>
-        <div id="results"></div>
-    `;
+    hideAll();
+    document.getElementById("contact").classList.remove("hidden");
+}
+
+function hideAll() {
+    document.getElementById("home").classList.add("hidden");
+    document.getElementById("about").classList.add("hidden");
+    document.getElementById("contact").classList.add("hidden");
 }
 
 function searchPlace() {
-    let input = document.getElementById("searchInput").value.toLowerCase();
+    let query = document.getElementById("searchInput").value.toLowerCase();
     let results = document.getElementById("results");
     results.innerHTML = "";
 
-    if (input.includes("beach")) {
-        results.innerHTML += `
-            <div class="card">
-                <h3>Maldives Beach</h3>
-                <img src="https://source.unsplash.com/300x200/?beach">
-            </div>
-            <div class="card">
-                <h3>Goa Beach</h3>
-                <img src="https://source.unsplash.com/300x200/?beach,india">
-            </div>
-        `;
+    if (query.includes("beach")) {
+        results.innerHTML += createCard("Maldives Beach", "https://upload.wikimedia.org/wikipedia/commons/0/0e/Maldives_beach.jpg");
+        results.innerHTML += createCard("Goa Beach", "https://upload.wikimedia.org/wikipedia/commons/5/5c/Goa_beach.jpg");
     }
 
-    if (input.includes("temple")) {
-        results.innerHTML += `
-            <div class="card">
-                <h3>Golden Temple</h3>
-                <img src="https://source.unsplash.com/300x200/?temple">
-            </div>
-            <div class="card">
-                <h3>Meenakshi Temple</h3>
-                <img src="https://source.unsplash.com/300x200/?hindu-temple">
-            </div>
-        `;
+    else if (query.includes("temple")) {
+        results.innerHTML += createCard("Golden Temple", "https://upload.wikimedia.org/wikipedia/commons/4/4f/Golden_Temple_Amritsar.jpg");
+        results.innerHTML += createCard("Meenakshi Temple", "https://upload.wikimedia.org/wikipedia/commons/3/3f/Meenakshi_Amman_Temple.jpg");
     }
 
-    if (input.includes("country")) {
-        results.innerHTML += `
-            <div class="card">
-                <h3>France</h3>
-                <img src="https://source.unsplash.com/300x200/?france">
-            </div>
-            <div class="card">
-                <h3>Japan</h3>
-                <img src="https://source.unsplash.com/300x200/?japan">
-            </div>
-        `;
-    }
-
-    if (results.innerHTML === "") {
-        results.innerHTML = "<p>No results found.</p>";
+    else if (query.includes("country")) {
+        results.innerHTML += createCard("France", "https://upload.wikimedia.org/wikipedia/commons/a/a8/Tour_Eiffel_Wikimedia_Commons.jpg");
+        results.innerHTML += createCard("Japan", "https://upload.wikimedia.org/wikipedia/commons/1/12/Mount_Fuji_from_Hotel_Mt_Fuji_2012.jpg");
     }
 }
 
 function clearResults() {
-    document.getElementById("searchInput").value = "";
     document.getElementById("results").innerHTML = "";
+    document.getElementById("searchInput").value = "";
 }
 
+function createCard(title, imageUrl) {
+    return `
+        <div class="card">
+            <h3>${title}</h3>
+            <img src="${imageUrl}" alt="${title}">
+        </div>
+    `;
+}
 </script>
 
 </body>
