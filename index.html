@@ -57,10 +57,6 @@
             padding: 20px;
         }
 
-        .hidden {
-            display: none;
-        }
-
         .card {
             background: white;
             padding: 15px;
@@ -76,16 +72,6 @@
             object-fit: cover;
             border-radius: 5px;
         }
-
-        form input, form textarea {
-            width: 300px;
-            padding: 6px;
-        }
-
-        form button {
-            padding: 6px 12px;
-            margin-top: 10px;
-        }
     </style>
 </head>
 
@@ -93,9 +79,9 @@
 
 <nav>
     <ul>
-        <li><a href="#" onclick="showHome()">Home</a></li>
-        <li><a href="#" onclick="showAbout()">About Us</a></li>
-        <li><a href="#" onclick="showContact()">Contact Us</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
     </ul>
 
     <div class="search-container">
@@ -105,68 +91,14 @@
     </div>
 </nav>
 
-<section id="home">
+<section>
     <h1>Welcome to Our Travel Recommendation Website</h1>
     <p>Discover beautiful beaches, historic temples, and amazing countries around the world.</p>
-</section>
-
-<section id="about" class="hidden">
-    <h2>About Us</h2>
-    <p>We are a travel recommendation company dedicated to helping users explore the world.</p>
-
-    <h3>Our Team</h3>
-    <ul>
-        <li><strong>Aloshy</strong> – Project Developer</li>
-        <li><strong>John Doe</strong> – Content Manager</li>
-        <li><strong>Jane Smith</strong> – UI Designer</li>
-    </ul>
-
-    <p>Team members are responsible for maintaining quality content, updating destinations, and improving user experience.</p>
-</section>
-
-<section id="contact" class="hidden">
-    <h2>Contact Us</h2>
-    <p>Email: travel@example.com</p>
-    <p>Phone: +91 9876543210</p>
-
-    <form>
-        <label>Name:</label><br>
-        <input type="text" required><br><br>
-
-        <label>Email:</label><br>
-        <input type="email" required><br><br>
-
-        <label>Message:</label><br>
-        <textarea rows="4" required></textarea><br><br>
-
-        <button type="submit">Submit</button>
-    </form>
 </section>
 
 <section id="results"></section>
 
 <script>
-function showHome() {
-    hideAll();
-    document.getElementById("home").classList.remove("hidden");
-}
-
-function showAbout() {
-    hideAll();
-    document.getElementById("about").classList.remove("hidden");
-}
-
-function showContact() {
-    hideAll();
-    document.getElementById("contact").classList.remove("hidden");
-}
-
-function hideAll() {
-    document.getElementById("home").classList.add("hidden");
-    document.getElementById("about").classList.add("hidden");
-    document.getElementById("contact").classList.add("hidden");
-}
-
 function searchPlace() {
     let query = document.getElementById("searchInput").value.toLowerCase();
     let results = document.getElementById("results");
