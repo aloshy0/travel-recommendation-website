@@ -150,18 +150,18 @@ function searchPlace() {
     results.innerHTML = "";
 
     if (query.includes("beach")) {
-        results.innerHTML += createCard("Maldives Beach", "https://upload.wikimedia.org/wikipedia/commons/0/0e/Maldives_beach.jpg");
-        results.innerHTML += createCard("Goa Beach", "https://upload.wikimedia.org/wikipedia/commons/5/5c/Goa_beach.jpg");
+       createCard("Maldives Beach", "https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+createCard("Goa Beach", "https://images.unsplash.com/photo-1587502537745-84a2a4b5b0a0");
     }
 
     else if (query.includes("temple")) {
-        results.innerHTML += createCard("Golden Temple", "https://upload.wikimedia.org/wikipedia/commons/4/4f/Golden_Temple_Amritsar.jpg");
-        results.innerHTML += createCard("Meenakshi Temple", "https://upload.wikimedia.org/wikipedia/commons/3/3f/Meenakshi_Amman_Temple.jpg");
+createCard("Golden Temple", "https://images.unsplash.com/photo-1609942072337-c3370e820b38");
+createCard("Meenakshi Temple", "https://images.unsplash.com/photo-1621416894569-0f39ed31d247");
     }
 
     else if (query.includes("country")) {
-        results.innerHTML += createCard("France", "https://upload.wikimedia.org/wikipedia/commons/a/a8/Tour_Eiffel_Wikimedia_Commons.jpg");
-        results.innerHTML += createCard("Japan", "https://upload.wikimedia.org/wikipedia/commons/1/12/Mount_Fuji_from_Hotel_Mt_Fuji_2012.jpg");
+        createCard("France", "https://images.unsplash.com/photo-1502602898657-3e91760cbb34");
+createCard("Japan", "https://images.unsplash.com/photo-1549692520-acc6669e2f0c");
     }
 }
 
