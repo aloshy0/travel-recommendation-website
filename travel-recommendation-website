@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Travel Recommendation Website</title>
+    <style>
+        body { font-family: Arial; margin: 0; padding: 0; }
+        nav { background: #333; padding: 10px; color: white; display: flex; justify-content: space-between; align-items: center; }
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+        nav ul li { margin-right: 20px; }
+        nav ul li a { color: white; text-decoration: none; }
+        .search-container input { padding: 5px; }
+        .search-container button { padding: 5px 10px; margin-left: 5px; }
+        .content { padding: 20px; }
+        .card { margin: 15px 0; }
+        img { width: 300px; height: 200px; object-fit: cover; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+    </ul>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button onclick="searchPlace()">Search</button>
+        <button onclick="clearResults()">Clear</button>
+    </div>
+</nav>
+
+<div class="content">
+    <h1>Welcome to Our Travel Recommendation Website</h1>
+    <p>This website helps you discover beaches, temples, and countries around the world.</p>
+
+    <div id="results"></div>
+</div>
+
+<script>
+function searchPlace() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let results = document.getElementById("results");
+    results.innerHTML = "";
+
+    if (input.includes("beach")) {
+        results.innerHTML += `
+            <div class="card">
+                <h3>Maldives Beach</h3>
+                <img src="https://source.unsplash.com/300x200/?beach">
+            </div>
+            <div class="card">
+                <h3>Goa Beach</h3>
+                <img src="https://source.unsplash.com/300x200/?beach,india">
+            </div>
+        `;
+    }
+
+    if (input.includes("temple")) {
+        results.innerHTML += `
+            <div class="card">
+                <h3>Golden Temple</h3>
+                <img src="https://source.unsplash.com/300x200/?temple">
+            </div>
+            <div class="card">
+                <h3>Meenakshi Temple</h3>
+                <img src="https://source.unsplash.com/300x200/?hindu-temple">
+            </div>
+        `;
+    }
+
+    if (input.includes("country")) {
+        results.innerHTML += `
+            <div class="card">
+                <h3>France</h3>
+                <img src="https://source.unsplash.com/300x200/?france">
+            </div>
+            <div class="card">
+                <h3>Japan</h3>
+                <img src="https://source.unsplash.com/300x200/?japan">
+            </div>
+        `;
+    }
+}
+
+function clearResults() {
+    document.getElementById("results").innerHTML = "";
+    document.getElementById("searchInput").value = "";
+}
+</script>
+
+</body>
+</html>
