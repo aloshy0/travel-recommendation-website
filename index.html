@@ -2,17 +2,17 @@
 <html>
 <head>
     <title>Travel Recommendation Website</title>
+    <meta charset="UTF-8">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
             background-color: #f4f4f4;
         }
 
         nav {
-            background-color: #333;
-            padding: 10px;
+            background-color: #222;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -20,13 +20,13 @@
 
         nav ul {
             list-style: none;
+            display: flex;
             margin: 0;
             padding: 0;
-            display: flex;
         }
 
         nav ul li {
-            margin-right: 15px;
+            margin-right: 20px;
         }
 
         nav ul li a {
@@ -36,36 +36,59 @@
         }
 
         .search-container input {
-            padding: 5px;
+            padding: 6px;
+            border-radius: 4px;
+            border: none;
         }
 
         .search-container button {
-            padding: 5px 10px;
+            padding: 6px 10px;
             margin-left: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            opacity: 0.8;
         }
 
         section {
             padding: 20px;
         }
 
+        .hidden {
+            display: none;
+        }
+
         .card {
             background: white;
             padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
+            margin: 15px 0;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            max-width: 400px;
         }
 
         .card img {
             width: 100%;
-            max-width: 300px;
+            height: 200px;
+            object-fit: cover;
             border-radius: 5px;
         }
 
-        .hidden {
-            display: none;
+        form input, form textarea {
+            width: 300px;
+            padding: 6px;
+        }
+
+        form button {
+            padding: 6px 12px;
+            margin-top: 10px;
         }
     </style>
 </head>
+
 <body>
 
 <nav>
@@ -84,12 +107,12 @@
 
 <section id="home">
     <h1>Welcome to Our Travel Recommendation Website</h1>
-    <p>This website helps you discover beautiful beaches, historic temples, and amazing countries to explore.</p>
+    <p>Discover beautiful beaches, historic temples, and amazing countries around the world.</p>
 </section>
 
 <section id="about" class="hidden">
     <h2>About Us</h2>
-    <p>We are a travel recommendation company dedicated to helping users find the best destinations around the world.</p>
+    <p>We are a travel recommendation company dedicated to helping users explore the world.</p>
 
     <h3>Our Team</h3>
     <ul>
@@ -98,7 +121,7 @@
         <li><strong>Jane Smith</strong> – UI Designer</li>
     </ul>
 
-    <p>Team members are expected to maintain high-quality code, collaborate effectively, and contribute innovative travel ideas.</p>
+    <p>Team members are responsible for maintaining quality content, updating destinations, and improving user experience.</p>
 </section>
 
 <section id="contact" class="hidden">
@@ -114,7 +137,7 @@
         <input type="email" required><br><br>
 
         <label>Message:</label><br>
-        <textarea required></textarea><br><br>
+        <textarea rows="4" required></textarea><br><br>
 
         <button type="submit">Submit</button>
     </form>
@@ -150,18 +173,18 @@ function searchPlace() {
     results.innerHTML = "";
 
     if (query.includes("beach")) {
-       createCard("Maldives Beach", "https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
-createCard("Goa Beach", "https://images.unsplash.com/photo-1587502537745-84a2a4b5b0a0");
+        results.innerHTML += createCard("Maldives Beach", "https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+        results.innerHTML += createCard("Goa Beach", "https://images.unsplash.com/photo-1587502537745-84a2a4b5b0a0");
     }
 
     else if (query.includes("temple")) {
-createCard("Golden Temple", "https://images.unsplash.com/photo-1609942072337-c3370e820b38");
-createCard("Meenakshi Temple", "https://images.unsplash.com/photo-1621416894569-0f39ed31d247");
+        results.innerHTML += createCard("Golden Temple", "https://images.unsplash.com/photo-1609942072337-c3370e820b38");
+        results.innerHTML += createCard("Meenakshi Temple", "https://images.unsplash.com/photo-1621416894569-0f39ed31d247");
     }
 
     else if (query.includes("country")) {
-        createCard("France", "https://images.unsplash.com/photo-1502602898657-3e91760cbb34");
-createCard("Japan", "https://images.unsplash.com/photo-1549692520-acc6669e2f0c");
+        results.innerHTML += createCard("France", "https://images.unsplash.com/photo-1502602898657-3e91760cbb34");
+        results.innerHTML += createCard("Japan", "https://images.unsplash.com/photo-1549692520-acc6669e2f0c");
     }
 }
 
