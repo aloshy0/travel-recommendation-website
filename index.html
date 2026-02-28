@@ -3,25 +3,78 @@
 <head>
     <title>Travel Recommendation Website</title>
     <style>
-        body { font-family: Arial; margin: 0; padding: 0; }
-        nav { background: #333; padding: 10px; color: white; display: flex; justify-content: space-between; align-items: center; }
-        nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
-        nav ul li { margin-right: 20px; }
-        nav ul li a { color: white; text-decoration: none; }
-        .search-container input { padding: 5px; }
-        .search-container button { padding: 5px 10px; margin-left: 5px; }
-        .content { padding: 20px; }
-        .card { margin: 15px 0; }
-        img { width: 300px; height: 200px; object-fit: cover; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .search-container input {
+            padding: 5px;
+        }
+
+        .search-container button {
+            padding: 5px 10px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .card {
+            margin-top: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            margin-top: 10px;
+        }
     </style>
 </head>
+
 <body>
 
 <nav>
     <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><a href="#" onclick="showHome()">Home</a></li>
+        <li><a href="#" onclick="showAbout()">About Us</a></li>
+        <li><a href="#" onclick="showContact()">Contact Us</a></li>
     </ul>
 
     <div class="search-container">
@@ -31,14 +84,40 @@
     </div>
 </nav>
 
-<div class="content">
+<div class="content" id="mainContent">
     <h1>Welcome to Our Travel Recommendation Website</h1>
     <p>This website helps you discover beaches, temples, and countries around the world.</p>
-
     <div id="results"></div>
 </div>
 
 <script>
+
+function showHome() {
+    document.getElementById("mainContent").innerHTML = `
+        <h1>Welcome to Our Travel Recommendation Website</h1>
+        <p>This website helps you discover beaches, temples, and countries around the world.</p>
+        <div id="results"></div>
+    `;
+}
+
+function showAbout() {
+    document.getElementById("mainContent").innerHTML = `
+        <h1>About Us</h1>
+        <p>We are a travel recommendation company helping users explore destinations worldwide.</p>
+        <p><strong>Team Guidance:</strong> Team members should regularly update destination data, verify image sources, and maintain clean code structure.</p>
+        <div id="results"></div>
+    `;
+}
+
+function showContact() {
+    document.getElementById("mainContent").innerHTML = `
+        <h1>Contact Us</h1>
+        <p>Email: support@travelrecommendation.com</p>
+        <p>Phone: +91-XXXXXXXXXX</p>
+        <div id="results"></div>
+    `;
+}
+
 function searchPlace() {
     let input = document.getElementById("searchInput").value.toLowerCase();
     let results = document.getElementById("results");
@@ -82,12 +161,17 @@ function searchPlace() {
             </div>
         `;
     }
+
+    if (results.innerHTML === "") {
+        results.innerHTML = "<p>No results found.</p>";
+    }
 }
 
 function clearResults() {
-    document.getElementById("results").innerHTML = "";
     document.getElementById("searchInput").value = "";
+    document.getElementById("results").innerHTML = "";
 }
+
 </script>
 
 </body>
